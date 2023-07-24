@@ -5,34 +5,38 @@ Created on Thu Jul 20 04:13:01 2023
 @author: Elisabeth
 """
 
-import cv2
-import scipy.spatial.distance as dist
+#import cv2
+#import scipy.spatial.distance as dist
 import numpy as np
 import pandas as pd
-import csv
-import os, math
-import matplotlib
+#import csv
+import os
+#import matplotlib
 import matplotlib.pyplot as plt
 from scipy.ndimage import measurements
-import os
-
+#from PIL import Image
 
 #On part de la matrice de la classe arbre, déassemblée et nettoyée
 
 #Open the class matrix
 root = os.path.dirname(__file__)
-rel_path = os.path.join("..","map_eau_Tl6.csv")
+rel_path = os.path.join("C:\Users\Portable Elisabeth\Desktop\Synchronise\INSA_IR\Stage\Stage_AI_Thailand\AIT\PostProcessing", "map_eau_Tl6.csv")
 file_path = os.path.join(root, rel_path)
-#mat = open(file_path)
+mat = open(file_path)
+mat=np.loadtxt(mat,delimiter=",")
 
-# Utiliser le module csv pour lire le fichier CSV avec l'encodage UTF-8
-with open(file_path, newline='', encoding='utf-8') as csvfile:
-    matrice = list(csv.reader(csvfile, delimiter=','))
+# # Utiliser le module csv pour lire le fichier CSV avec l'encodage UTF-8
+# with open(file_path, newline='', encoding='utf-8') as csvfile:
+#     matrice = list(csv.reader(csvfile, delimiter=','))
+matrice = open(file_path)
 
 # Convertir la liste en matrice numpy
 matrice = np.array(matrice, dtype=int)
 
+#mat=np.loadtxt(matrice,dtype=str)
 mat=np.loadtxt(matrice,delimiter=",")
+#mat=np.genfromtxt(matrice,delimiter=",")
+
 
 # Convert considered class in '1' (not use if it's not already the case)
 mat[np.where(mat==0)]=2
