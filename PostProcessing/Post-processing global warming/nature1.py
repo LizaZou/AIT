@@ -31,7 +31,7 @@ lw, num = measurements.label(mat) #num: nb initial of cluster
                                   #lw: matrix of cluster (each one has its own number)
 
 #Threshold size of cluster to keep 
-seuil = 5  # /!\ MODIFY
+seuil = 1  # /!\ en nbre de pixels
 
 #Creating the output data of this file 
 Output = np.zeros((4,num)) #array of K columns and 4 lines (type, center(x,y), radius in m)
@@ -53,7 +53,7 @@ for k in range(1,num+1):
     typeK = int(mat[x[0],y[0]])
     
     #Coordinate of the center of the k-cluster
-    a,b = measurements.center_of_mass(classK)
+    a,b = measurements.center_of_mass(classK)           
     xx = x-a
     yy = y-b
 
