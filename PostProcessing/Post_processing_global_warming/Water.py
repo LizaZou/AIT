@@ -118,6 +118,10 @@ nb_halo = 3  # /!\ MODIFY
 for aux in range(1, nb_cluster+1):
     globals()['matF' + str(aux)] = np.zeros(np.shape(matF))
     
+    # Ajout du calcul du gradient autour du cluster
+    for h in range(1, nb_cluster+1):
+        for col in range(globals()['matF' + str(h)].shape[1]):
+    
 # Distances par rapport au cluster
 #distances_intervals = [0, 25, 50, 100]  # Distances en mètre
 # Conversion en pixel : 3 pixels = 1 mètre
